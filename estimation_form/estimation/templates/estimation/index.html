@@ -1,0 +1,702 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="icon" href="{% static 't-shits-icon.gif' %}">
+    <title>プラスワンインターナショナル_見積依頼</title>
+
+</head>
+<body>
+    <div class="mt-3 mb-5">
+
+        <!-- タイトル-->
+        <div style="margin: 0 auto; width: 1000px;">
+            <div class="flex2" style="justify-content: space-between;">
+                <div class="flex2">
+                    <div>
+                        <a href="https://www.p1-intl.com/" target="_blank"><img src="{% static 'logo.png' %}"></a>
+                    </div>
+                    <div style="margin-left: 30px; margin-top: 5px;">
+                        <h3>株式会社プラスワンインターナショナル</h3>
+                    </div>
+                </div>
+                <div>
+                    {% if user_id == "jingi" or user_id == "admin" %}
+                    <div style="margin-left: 100px;">
+                        <a href="{% url 'est:list_index' %}">
+                            <button type="button" class="btn btn-outline-secondary"><img src="{% static 'chinese_noodle.gif' %}"> 見積依頼一覧表</button>
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 01 依頼担当 -->
+        <div class="mt-5" style="margin: 0 auto; width: 1000px;">
+            <div class="title"><span>01</span>見積ご依頼者について</div>
+            <div class="flex2" style="margin-top: 20px;">
+                <div>
+                    貴社名：
+                    <input class="form-control" style="width: 300px;" type="text" id="f_com" name="form_input" value="{{form_li.f_com}}">
+                </div>
+                <div style="margin-left: 20px;">
+                    支店名 / 部署名：
+                    <input class="form-control" style="width: 200px;" type="text" id="f_busho" name="form_input" value="{{form_li.f_busho}}">
+                </div>
+                <div style="margin-left: 20px;">
+                    ご担当者：
+                    <input class="form-control" style="width: 200px;" type="text" id="f_tantou" name="form_input" value="{{form_li.f_tantou}}">
+                </div>
+            </div>
+            <div class="flex2" style="margin-top: 20px;">
+                <div>
+                    電話番号：
+                    <input class="form-control" style="width: 150px;" type="text" id="f_tel" name="form_input" value="{{form_li.f_tel}}">
+                </div>
+                <div style="margin-left: 20px;">
+                    メールアドレス：
+                    <input class="form-control" style="width: 400px;" type="text" id="f_mail" name="form_input" value="{{form_li.f_mail}}">
+                </div>
+            </div>
+        </div>
+
+        <!-- 02 顧客情報 -->
+        <div style="margin: 0 auto; width: 1000px; margin-top: 100px;">
+            <div class="title"><span>02</span>お届け先について</div>
+            <div class="flex2" style="margin-top: 20px;">
+                <div>
+                    会社名 / 団体名：
+                    <input class="form-control" style="width: 300px;" type="text" id="f_cus_com" name="form_input" value="{{form_li.f_cus_com}}">
+                </div>
+                <div style="margin-left: 20px;">
+                    顧客名：
+                    <input class="form-control" style="width: 200px;" type="text" id="f_cus_name" name="form_input" value="{{form_li.f_cus_name}}">
+                </div>
+            </div>
+            <div class="flex2" style="margin-top: 20px;">
+                <div>
+                    郵便番号：
+                    <input class="form-control" style="width: 100px;" type="text" id="f_cus_yubin" name="form_input" value="{{form_li.f_cus_yubin}}">
+                </div>
+                <div style="margin-left: 20px;">
+                    住所：
+                    <input class="form-control" style="width: 700px;" type="text" id="f_cus_adress" name="form_input" value="{{form_li.f_cus_adress}}">
+                </div>
+            </div>
+            <div class="flex2" style="margin-top: 20px;">
+                <div>
+                    電話番号：
+                    <input class="form-control" style="width: 150px;" type="text" id="f_cus_tel" name="form_input" value="{{form_li.f_cus_tel}}">
+                </div>
+                <div style="margin-left: 20px;">
+                    希望納期：
+                    <input class="form-control" style="width: 150px;" type="date" id="f_cus_send_day" name="form_input" value="{{form_li.f_cus_send_day}}">
+                </div>
+                <div style="margin-left: 20px;">
+                    利用予定日：
+                    <input class="form-control" style="width: 150px;" type="date" id="f_cus_use_day" name="form_input" value="{{form_li.f_cus_use_day}}">
+                </div>
+            </div>
+        </div>
+        
+        <!-- 03 商品について -->
+        <div style="margin: 0 auto; width: 1000px; margin-top: 100px;">
+            <div class="title"><span>03</span>商品について</div>
+            <div class="flex2" style="margin-top: 20px;">
+                <div>
+                    <button type="button" class="btn btn-outline-primary" id="btn_shouhin_add" data-bs-toggle="modal" data-bs-target="#shouhin_modal">
+                        <i class='bi bi-plus-lg'></i> 商品を追加する
+                    </button>
+                </div>
+                <div class="flex3" style="margin-left: 50px;">
+                    <div>たたみ・袋詰め：</div>
+                    <div>
+                        <select class="form-select form-select-sm" id="f_shouhin_tatami" name="form_input">
+                            {% if form_li.f_shouhin_tatami == "あり" %}
+                            <option value="なし">なし</option>
+                            <option value="あり" selected>あり</option>
+                            {% else %}
+                            <option value="なし" selected>なし</option>
+                            <option value="あり">あり</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <div>
+                {% for i in shouhin_li %}
+                <div style="margin-top: 20px; font-size: 0.9em;">
+                    <table class="table table-bordered size">
+                        <tr>
+                            <th nowrap>メーカー</th>
+                            <th nowrap>品番</th>
+                            <th>品名</th>
+                            <th nowrap>カラー</th>
+                            <th>XXS</th>
+                            <th>XS</th>
+                            <th>S</th>
+                            <th>M</th>
+                            <th>L</th>
+                            <th>LL</th>
+                            <th>3L</th>
+                            <th>4L</th>
+                            <th>{{i.new_size_1}}</th>
+                            <th>{{i.new_size_2}}</th>
+                            <th nowrap>合計</th>
+                            <th rowspan="2" nowrap>
+                                <div>
+                                    <button type="button" class="btn btn-outline-success btn-sm" id="shouhin_up_{{i.index}}" name="shouhin_up"
+                                    data-bs-toggle="modal" data-bs-target="#shouhin_modal">修正</button>
+                                </div>
+                                <div style="margin-top: 10px;">
+                                    <button type="button" class="btn btn-outline-danger btn-sm" id="shouhin_del_{{i.index}}" name="shouhin_del">削除</button>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;" nowrap>{{i.maker}}</td>
+                            <td style="text-align: center;" nowrap>{{i.shouhin_num}}</td>
+                            <td style="text-align: center;">{{i.shouhin_name}}</td>
+                            <td style="text-align: center;" nowrap>{{i.color}}</td>
+                            {% for h in i.size_li %}
+                            <td style="text-align: center;" nowrap>{{h}}</td>
+                            {% endfor %}
+                            <td style="text-align: center;" nowrap>{{i.sum}}</td>
+                        </tr>
+                    </table>
+                </div>
+                {% endfor %}
+            </div>
+            <div style="margin-top: 30px;">
+                備考欄：
+                <textarea class="form-control" style="width: 500px;" rows="5" id="f_shouhin_bikou" name="form_input">{{form_li.f_shouhin_bikou}}</textarea> 
+            </div>
+        </div>
+        
+        <!-- 04 プリント内容について -->
+        <div style="margin: 0 auto; width: 1000px; margin-top: 80px;">
+            <div class="title"><span>04</span>プリント内容について</div>
+            <div class="flex2" style="margin-top: 30px;">
+                <div>
+                    <div style="position: relative;"><img src="{% static 't-shirt.png' %}"></div>
+                    <div class="pri_all pri_1" style="margin-top: -280px; margin-left: 20px;" id="右袖（Ｅ）" name="print_point"
+                        data-bs-toggle="modal" data-bs-target="#print_modal">E</div>
+                    <div class="pri_all pri_1" style="margin-top: -280px; margin-left: 285px;" id="左袖（Ｄ）" name="print_point"
+                        data-bs-toggle="modal" data-bs-target="#print_modal">D</div>
+                    <div class="pri_all pri_2" style="margin-top: -220px; margin-left: 110px;" id="胸中央（Ｃ）" name="print_point"
+                        data-bs-toggle="modal" data-bs-target="#print_modal">C</div>
+                    <div class="pri_all pri_1" style="margin-top: -210px; margin-left: 200px;" id="左胸（Ａ）" name="print_point"
+                        data-bs-toggle="modal" data-bs-target="#print_modal">A</div>
+                    <div class="pri_all pri_1" style="margin-top: -210px; margin-left: 105px;" id="右胸（Ｂ）" name="print_point"
+                        data-bs-toggle="modal" data-bs-target="#print_modal">B</div>
+                    <div class="pri_all pri_3" style="margin-top: -100px; margin-left: 110px;" id="前面下（Ｆ）" name="print_point"
+                        data-bs-toggle="modal" data-bs-target="#print_modal">F</div>
+                    <div class="pri_all pri_2" style="margin-top: -220px; margin-left: 465px;" id="背中中央（Ｈ）" name="print_point"
+                        data-bs-toggle="modal" data-bs-target="#print_modal">H</div>
+                    <div class="pri_all pri_1" style="margin-top: -270px; margin-left: 507px;" id="背中襟下（Ｇ）" name="print_point"
+                        data-bs-toggle="modal" data-bs-target="#print_modal">G</div>
+                    <div class="pri_all pri_3" style="margin-top: -100px; margin-left: 465px;" id="背中中央下（Ｉ）" name="print_point"
+                        data-bs-toggle="modal" data-bs-target="#print_modal">I</div>
+                </div>
+                <div style="margin-left: 70px; margin-top: -30px;">
+                    {% if print_li %}
+                        <div class="print_title">プリント内容</div>
+                        {% for i in print_li %}
+                        <div>
+                            <div class="flex3 mt-3">
+                                <div>プリント箇所：</div>
+                                <div style="font-weight: bold;">{{i.point}}</div>
+                            </div>
+                            <div class="flex3">
+                                <div>プリント色：</div>
+                                <div style="font-weight: bold;">{{i.color}}</div>
+                            </div>
+                            <div class="flex3">
+                                <div>加工方法：</div>
+                                <div style="font-weight: bold;">{{i.way}}</div>
+                            </div>
+                            <div class="flex3 mt-2">
+                                <div>
+                                    <button type="button" class="btn btn-outline-success btn-sm" id="print_up_{{i.index}}" name="print_up"
+                                    data-bs-toggle="modal" data-bs-target="#print_modal">修正</button>
+                                </div>
+                                <div style="margin-left: 10px;">
+                                    <button type="button" class="btn btn-outline-danger btn-sm" id="print_del_{{i.index}}" name="print_del">削除</button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- 05 デザインの入稿形式について -->
+        <div style="margin: 0 auto; width: 1000px; margin-top: 100px;">
+            <div class="flex2">
+                <div>
+                    <div class="title"><span>05</span>デザインの入稿形式について</div>
+                    <div style="margin-top: 20px;">
+                        {% for i,h in design_li.items %}
+                            {% if h == False %}
+                            <div style="margin-top: 5px;"><input class="form-check-input" type="checkbox" name="design_check"> {{i}}</div>
+                            {% else %}
+                            <div style="margin-top: 5px;"><input class="form-check-input" type="checkbox" name="design_check" checked> {{i}}</div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div style="margin-left: 100px; width: 400px;">
+                    <div style="margin-top: 20px;">
+                        備考欄：
+                        <textarea class="form-control" id="f_print_bikou" name="form_input" rows="5">{{form_li.f_print_bikou}}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="design" style="margin-top: 50px;">
+                <div>著作権・商標登録のあるデザインは、関係者以外からの加工依頼はお受けできませんので、予めご了承ください。</div>
+            </div>
+        </div>
+
+        <!-- 最終ボタン -->
+        <div style="margin: 0 auto; width: 1000px; margin-top: 50px;">
+            <div>
+                <button type="button" class="btn btn-danger" id="btn_submit" style="width: 450px; height: 70px;">
+                    <i class="bi bi-hand-index"></i> 上記の内容でよろしければ、クリックして保存してください
+                </button>
+            </div>
+        </div>
+
+
+        <!-- モーダル1　商品入力 -->
+        <div class="modal fade" id="shouhin_modal" tabindex="-1" role="dialog" aria-labelledby="modal_1" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_1" style="color: #f75f58;">商品情報を入力してください</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div id="shouhin_add_up_num" style="display: none;"></div>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            メーカー：
+                            <input class="form-control" style="width: 200px;" type="text" id="maker">
+                        </div>
+                        <div class="flex2" style="margin-top: 20px;">
+                            <div>品番：
+                                <input class="form-control" style="width: 100px;" type="text" id="shouhin_num">
+                            </div>
+                            <div style="margin-left: 20px;">
+                                品名：
+                                <input class="form-control" style="width: 600px;" type="text" id="shouhin_name">
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            カラー：
+                            <input class="form-control" style="width: 200px;" type="text" id="color">
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <div class="flex2" style="justify-content: space-between;">
+                                <div>サイズ：</div>
+                                <div style="font-size: 0.9em; color: red;">※左記以外の場合に入力</div>
+                            </div>
+                            <table class="table table-bordered size">
+                                <tr>
+                                    {% for i in size_li %}
+                                    <th style="width: 10%;">{{i}}</th>
+                                    {% endfor %}
+                                    <th style="width: 10%;"><input class="form-control" type="text" id="new_size_1" style="background-color: #ffffc1;"></th>
+                                    <th style="width: 10%;"><input class="form-control" type="text" id="new_size_2" style="background-color: #ffffc1;"></th>
+                                </tr>
+                                <tr id="size_input_list"></tr> 
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div style="text-align: right;">
+                            <button type="button" id="modal_shouhin_add_up"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <!-- モーダル2　プリント内容 -->
+        <div class="modal fade" id="print_modal" tabindex="-1" role="dialog" aria-labelledby="modal_2" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_2" style="color: #f75f58;">プリント色と加工方法を入力してください。</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div id="print_add_up_num" style="display: none;"></div>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <div class="flex2" style="align-items: end;">
+                                <div>プリント箇所：</div>
+                                <div id="modal_print_point" style="color: #0000ff; font-size: 1.2em; font-weight: bold; margin-left: 10px;"></div>
+                            </div>
+                            <div class="flex3 mt-4">
+                                <div>プリント色：</div>
+                                <div><input class="form-control" type="text" id="modal_print_color" style="width: 200px;"></div>
+                            </div>
+                            <div class="flex3 mt-4">
+                                <div>加工方法：</div>
+                                <div><input class="form-control" type="text" id="modal_print_way" style="width: 200px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div style="text-align: right;">
+                            <button type="button" id="modal_print_add_up"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+    </div>
+
+
+
+    <!-- 各種Ajax -->
+    <script>
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i <cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+  
+        var csrftoken = getCookie('csrftoken');
+  
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+  
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+  
+
+        // 商品追加（モーダルを起動）
+        document.getElementById("btn_shouhin_add").addEventListener("click",function(){
+            document.getElementById("shouhin_add_up_num").innerText="add";
+            document.getElementById("maker").value="";
+            document.getElementById("shouhin_num").value="";
+            document.getElementById("shouhin_name").value="";
+            document.getElementById("color").value="";
+            document.getElementById("new_size_1").value="";
+            document.getElementById("new_size_2").value="";
+            document.getElementById("modal_shouhin_add_up").className="btn btn-primary";
+            document.getElementById("modal_shouhin_add_up").innerText="追加する";
+            str="";
+            for (var i=0; i<10; i++){
+                str=str + "<td><input class='form-control' type='number' name='size_suryo'></td>";
+            }
+            document.getElementById("size_input_list").innerHTML=str;
+        })
+
+
+        // 商品編集（モーダルを起動）
+        $("#shouhin_modal").on("show.bs.modal", function (event) {
+            var shouhin_up = document.getElementsByName("shouhin_up");
+            for (var i=0; i<shouhin_up.length; i++){
+                shouhin_up[i].addEventListener("click",function(){
+                    index=Number(this.id.replace("shouhin_up_",""));
+                    document.getElementById("shouhin_add_up_num").innerText=index;
+                    $.ajax({
+                        'url': '{% url "est:shouhin_modal_up" %}',
+                        'type': 'POST',
+                        'data': {'index': index},
+                        'dataType': 'json'
+                    })
+                    .done(function(response){
+                        res=response.shouhin;
+                        document.getElementById("maker").value=res.maker;
+                        document.getElementById("shouhin_num").value=res.shouhin_num;
+                        document.getElementById("shouhin_name").value=res.shouhin_name;
+                        document.getElementById("color").value=res.color;
+                        document.getElementById("new_size_1").value=res.new_size_1;
+                        document.getElementById("new_size_2").value=res.new_size_2;
+                        
+                        var str="";
+                        for (var i of res.size_li){
+                            str=str + "<td><input class='form-control' type='number' name='size_suryo' value='" + i + "'></td>";
+                        }
+                        document.getElementById("size_input_list").innerHTML=str;
+                        document.getElementById("modal_shouhin_add_up").className="btn btn-success";
+                        document.getElementById("modal_shouhin_add_up").innerText="修正する";
+                    });
+                });
+            };
+        });
+
+
+        // 商品_追加 or 編集（モーダルで決定）
+        document.getElementById("modal_shouhin_add_up").addEventListener("click",function(){
+            var form_input = document.getElementsByName("form_input");
+            var form_li={};
+            for (var i of form_input){
+                form_li[i.id]=i.value;
+            }
+            form_li=JSON.stringify(form_li);
+
+            var design_check = document.getElementsByName("design_check");
+            var design_yes=[];
+            for (var i of design_check){
+                design_yes.push(i.checked);
+            }
+            design_yes=JSON.stringify(design_yes);
+            
+            var size_suryo = document.getElementsByName("size_suryo");
+            var size_li=[];
+            var suryo=0;
+            for (i of size_suryo){
+                size_li.push(i.value);
+                suryo=suryo+i.value;
+            }
+            size_li=JSON.stringify(size_li);
+            
+            if (suryo==0){
+                window.alert("数量を入力してください！");
+                return
+            }
+            $.ajax({
+                'url': '{% url "est:shouhin_add_up" %}',
+                'type': 'POST',
+                'data': {
+                    'add_up_num': document.getElementById("shouhin_add_up_num").innerText,
+                    'maker': document.getElementById("maker").value,
+                    'shouhin_num': document.getElementById("shouhin_num").value,
+                    'shouhin_name': document.getElementById("shouhin_name").value,
+                    'color': document.getElementById("color").value,
+                    'new_size_1': document.getElementById("new_size_1").value,
+                    'new_size_2': document.getElementById("new_size_2").value,
+                    'size_li':size_li,
+                    'form_li':form_li,
+                    'design_yes':design_yes,
+                    },
+                'dataType': 'json'
+            })
+            .done(function(response){
+                window.location.reload();
+            })
+        });
+
+
+        // 商品削除
+        var shouhin_del = document.getElementsByName("shouhin_del");
+        for (var i=0; i<shouhin_del.length; i++){
+            shouhin_del[i].addEventListener("click",function(){
+                var ans =confirm("本当に削除しますか？");
+                if (ans == false){
+                    return
+                }
+
+                var form_input = document.getElementsByName("form_input");
+                var form_li={};
+                for (var i of form_input){
+                    form_li[i.id]=i.value;
+                }
+                form_li=JSON.stringify(form_li);
+
+                var design_check = document.getElementsByName("design_check");
+                var design_yes=[];
+                for (var i of design_check){
+                    design_yes.push(i.checked);
+                }
+                design_yes=JSON.stringify(design_yes);
+
+                index=Number(this.id.replace("shouhin_del_",""));
+                $.ajax({
+                    'url': '{% url "est:shouhin_del" %}',
+                    'type': 'POST',
+                    'data': {'index': index,'form_li':form_li,'design_yes':design_yes},
+                    'dataType': 'json'
+                })
+                .done(function(response){
+                    window.location.reload();
+                });
+            });
+        };
+
+
+        // プリント追加（モーダルを起動）
+        $("#print_modal").on("show.bs.modal", function (event) {
+            document.getElementById("print_add_up_num").innerText="add";
+            var print_point = document.getElementsByName("print_point");
+            for (var i=0; i<print_point.length; i++){
+                print_point[i].addEventListener("click",function(){
+                    document.getElementById("modal_print_point").innerText=this.id;
+                    document.getElementById("modal_print_add_up").className="btn btn-primary";
+                    document.getElementById("modal_print_add_up").innerText="追加する";
+                });
+            };
+        });
+
+
+        // プリント編集（モーダルを起動）
+        $("#print_modal").on("show.bs.modal", function (event) {
+            var print_up = document.getElementsByName("print_up");
+            for (var i=0; i<print_up.length; i++){
+                print_up[i].addEventListener("click",function(){
+                    index=Number(this.id.replace("print_up_",""));
+                    document.getElementById("print_add_up_num").innerText=index;
+                    $.ajax({
+                        'url': '{% url "est:print_modal_up" %}',
+                        'type': 'POST',
+                        'data': {'index': index},
+                        'dataType': 'json'
+                    })
+                    .done(function(response){
+                        res=response.print;
+                        document.getElementById("modal_print_point").innerText=res.point;
+                        document.getElementById("modal_print_color").value=res.color;
+                        document.getElementById("modal_print_way").value=res.way;
+                        document.getElementById("modal_print_add_up").className="btn btn-success";
+                        document.getElementById("modal_print_add_up").innerText="修正する";
+                    });
+                });
+            };
+        });
+
+
+        // プリント内容_追加 or 編集（モーダルで決定）
+        document.getElementById("modal_print_add_up").addEventListener("click",function(){
+            var form_input = document.getElementsByName("form_input");
+            var form_li={};
+            for (var i of form_input){
+                form_li[i.id]=i.value;
+            }
+            form_li=JSON.stringify(form_li);
+
+            var design_check = document.getElementsByName("design_check");
+            var design_yes=[];
+            for (var i of design_check){
+                design_yes.push(i.checked);
+            }
+            design_yes=JSON.stringify(design_yes);
+
+            $.ajax({
+                'url': '{% url "est:print_add_up" %}',
+                'type': 'POST',
+                'data': {
+                    "add_up_num": document.getElementById("print_add_up_num").innerText,
+                    "form_li": form_li,
+                    "design_yes": design_yes,
+                    "point": document.getElementById("modal_print_point").innerText,
+                    "color": document.getElementById("modal_print_color").value,
+                    "way": document.getElementById("modal_print_way").value,
+                },
+                'dataType': 'json'
+            })
+            .done(function(response){
+                window.location.reload();
+            });
+        });
+
+
+        // プリント削除
+        var print_del = document.getElementsByName("print_del");
+        for (var i=0; i<print_del.length; i++){
+            print_del[i].addEventListener("click",function(){
+                var ans =confirm("本当に削除しますか？");
+                if (ans == false){
+                    return
+                }
+
+                var form_input = document.getElementsByName("form_input");
+                var form_li={};
+                for (var i of form_input){
+                    form_li[i.id]=i.value;
+                }
+                form_li=JSON.stringify(form_li);
+
+                var design_check = document.getElementsByName("design_check");
+                var design_yes=[];
+                for (var i of design_check){
+                    design_yes.push(i.checked);
+                }
+                design_yes=JSON.stringify(design_yes);
+
+                index=Number(this.id.replace("print_del_",""));
+                $.ajax({
+                    'url': '{% url "est:print_del" %}',
+                    'type': 'POST',
+                    'data': {'index': index,'form_li':form_li,'design_yes':design_yes},
+                    'dataType': 'json'
+                })
+                .done(function(response){
+                    window.location.reload();
+                });
+            });
+        };
+
+
+        // 最終決定ボタン
+        document.getElementById("btn_submit").addEventListener("click",function(){
+            document.getElementById("btn_submit").disabled=true;
+            var form_input = document.getElementsByName("form_input");
+            var form_li={};
+            for (var i of form_input){
+                form_li[i.id]=i.value;
+            }
+            form_li=JSON.stringify(form_li);
+
+            var design_check = document.getElementsByName("design_check");
+            var design_yes=[];
+            for (var i of design_check){
+                design_yes.push(i.checked);
+            }
+            design_yes=JSON.stringify(design_yes);
+
+            $.ajax({
+                'url': '{% url "est:btn_submit" %}',
+                'type': 'POST',
+                'data': {
+                    "form_li": form_li,
+                    "design_yes": design_yes,
+                },
+                'dataType': 'json'
+            })
+            .done(function(response){
+                window.location.href="https://docs.google.com/forms/d/e/1FAIpQLSe0cQJlKAE1hUdd89-IVBr67zsVu-mcm8UBGO0pgeuI6LjGDw/viewform?usp=dialog";
+            });
+        });
+
+
+    </script>
+
+    <!-- モーダル用 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+}
+.flex2 {
+    display: flex;
+    flex-wrap: wrap;
+}
+.flex3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* タイトル */
+.title {
+    position: relative;
+    padding-left: 4em;
+    font-size: 1.2em;
+    font-weight: bold;
+}  
+.title span {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    padding: 0 1rem;
+    color: #e3f5d8;
+    background: #22ac38;
+}  
+.title span:after {
+    position: absolute;
+    top: calc(50% - 7px);
+    right: -11px;
+    width: 0;
+    height: 0;
+    content: '';
+    border-width: 7px 0 7px 12px;
+    border-style: solid;
+    border-color: transparent transparent transparent #22ac38;
+  }
+.print_title {
+    padding: 0.5em;
+    color: #494949;
+    background: #e1ffe1;
+    border-left: solid 5px #008080;
+    font-weight: bold;
+}
+
+/* サイズ表 */
+.size th,td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* プリント箇所 */
+.pri_all {
+    border: 1px solid #0d6efd;
+    position: absolute;
+    background-color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #0d6efd;
+}
+.pri_all:hover {
+    background-color: #ffff00;
+    cursor: pointer;
+}
+.pri_1 {
+    width: 40px;
+    height: 40px;
+}
+.pri_2 {
+    width: 125px;
+    height: 100px;
+    line-height: 95px;
+}
+.pri_3 {
+    width: 125px;
+    height: 50px;
+    line-height: 45px;
+}
+
+/* デザイン */
+.design {
+    position: relative;
+    padding: 1rem 2rem;
+    text-align: center;
+    color: #22ac38;
+    border-radius: 0 10px 10px 10px;
+    background: #e3f5d8;
+    width: 800px;
+}
+  
+.design:before {
+    font-size: 15px;
+    font-size: 1rem;
+    position: absolute;
+    top: -24px;
+    left: 0;
+    height: 24px;
+    padding: 0 1em;
+    content: '著作権について';
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    background: #22ac38;
+}
+
+/* 詳細画面 */
+.detail th,td {
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* ログイン */
+.login{
+    width: 300px;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #647b5d;
+    border-top: solid 7px #198754;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    margin: 0 auto;
+    margin-top: 200px;
+}
+.login_title {
+    color: #198754;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.3em 0;
+    border-top: solid 3px #198754;
+    border-bottom: solid 3px #198754;
+    background-color: #e7fdf3;
+}
+
