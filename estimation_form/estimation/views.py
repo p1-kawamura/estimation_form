@@ -239,7 +239,7 @@ def btn_submit(request):
         )
     
     # sessionクリア
-    request.session["form"]=[]
+    request.session["form"]={}
     request.session["shouhin"]=[]
     request.session["print"]=[]
     request.session["design_yes"]=[False,False,False,False,False]
