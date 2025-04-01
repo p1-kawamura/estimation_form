@@ -688,6 +688,7 @@
                 'dataType': 'json'
             })
             .done(function(response){
+                window.location.href="{% url 'est:logout' %}";
                 window.location.href="https://docs.google.com/forms/d/e/1FAIpQLSe0cQJlKAE1hUdd89-IVBr67zsVu-mcm8UBGO0pgeuI6LjGDw/viewform?usp=dialog";
             });
         });
