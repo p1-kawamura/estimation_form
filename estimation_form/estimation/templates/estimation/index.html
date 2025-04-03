@@ -14,7 +14,7 @@
 
 </head>
 <body>
-    <div class="mt-3 mb-5">
+    <div class="mt-3 mb-5" style="font-size: 0.9em;">
 
         <!-- タイトル-->
         <div style="margin: 0 auto; width: 1000px;">
@@ -39,82 +39,59 @@
             </div>
         </div>
 
-
-        <!-- 01 依頼担当 -->
+        <!-- 01 依頼担当 横タイプ -->
         <div class="mt-5" style="margin: 0 auto; width: 1000px;">
             <div class="title"><span>01</span>見積ご依頼者について</div>
-            <div class="flex2" style="margin-top: 20px;">
-                <div>
-                    貴社名：
-                    <input class="form-control" style="width: 300px;" type="text" id="f_com" name="form_input" value="{{form_li.f_com}}">
+            <div>
+                <div class="flex2" style="margin-top: 20px;">
+                    <div class="flex3">
+                        <div>貴社名：</div>
+                        <div>
+                            <input class="form-control form-control-sm" style="width: 250px;" type="text" id="f_com" name="form_input" value="{{form_li.f_com}}">
+                        </div>
+                    </div>
+                    <div style="margin-left: 20px;">
+                        <div class="flex3">
+                            <div>支店名 / 部署名：</div>
+                            <div>
+                                <input class="form-control form-control-sm" style="width: 200px;" type="text" id="f_busho" name="form_input" value="{{form_li.f_busho}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-left: 20px;">
+                        <div class="flex3">
+                            <div>ご担当者：</div>
+                            <div>
+                                <input class="form-control form-control-sm" style="width: 150px;" type="text" id="f_tantou" name="form_input" value="{{form_li.f_tantou}}">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div style="margin-left: 20px;">
-                    支店名 / 部署名：
-                    <input class="form-control" style="width: 200px;" type="text" id="f_busho" name="form_input" value="{{form_li.f_busho}}">
-                </div>
-                <div style="margin-left: 20px;">
-                    ご担当者：
-                    <input class="form-control" style="width: 200px;" type="text" id="f_tantou" name="form_input" value="{{form_li.f_tantou}}">
-                </div>
-            </div>
-            <div class="flex2" style="margin-top: 20px;">
-                <div>
-                    電話番号：
-                    <input class="form-control" style="width: 150px;" type="text" id="f_tel" name="form_input" value="{{form_li.f_tel}}">
-                </div>
-                <div style="margin-left: 20px;">
-                    メールアドレス：
-                    <input class="form-control" style="width: 400px;" type="text" id="f_mail" name="form_input" value="{{form_li.f_mail}}">
-                </div>
-            </div>
-        </div>
-
-        <!-- 02 顧客情報 -->
-        <div style="margin: 0 auto; width: 1000px; margin-top: 100px;">
-            <div class="title"><span>02</span>お届け先について</div>
-            <div class="flex2" style="margin-top: 20px;">
-                <div>
-                    会社名 / 団体名：
-                    <input class="form-control" style="width: 300px;" type="text" id="f_cus_com" name="form_input" value="{{form_li.f_cus_com}}">
-                </div>
-                <div style="margin-left: 20px;">
-                    顧客名：
-                    <input class="form-control" style="width: 200px;" type="text" id="f_cus_name" name="form_input" value="{{form_li.f_cus_name}}">
-                </div>
-            </div>
-            <div class="flex2" style="margin-top: 20px;">
-                <div>
-                    郵便番号：
-                    <input class="form-control" style="width: 100px;" type="text" id="f_cus_yubin" name="form_input" value="{{form_li.f_cus_yubin}}">
-                </div>
-                <div style="margin-left: 20px;">
-                    住所：
-                    <input class="form-control" style="width: 700px;" type="text" id="f_cus_adress" name="form_input" value="{{form_li.f_cus_adress}}">
+                <div class="flex2" style="margin-top: 20px;">
+                    <div class="flex3">
+                        <div>電話番号：</div>
+                        <div>
+                            <input class="form-control form-control-sm" style="width: 150px;" type="text" id="f_tel" name="form_input" value="{{form_li.f_tel}}">
+                        </div>
+                    </div>
+                    <div class="flex3" style="margin-left: 20px;">
+                        <div>メールアドレス：</div>
+                        <div>
+                            <input class="form-control form-control-sm" style="width: 400px;" type="text" id="f_mail" name="form_input" value="{{form_li.f_mail}}">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="flex2" style="margin-top: 20px;">
-                <div>
-                    電話番号：
-                    <input class="form-control" style="width: 150px;" type="text" id="f_cus_tel" name="form_input" value="{{form_li.f_cus_tel}}">
-                </div>
-                <div style="margin-left: 20px;">
-                    希望納期：
-                    <input class="form-control" style="width: 150px;" type="date" id="f_cus_send_day" name="form_input" value="{{form_li.f_cus_send_day}}">
-                </div>
-                <div style="margin-left: 20px;">
-                    利用予定日：
-                    <input class="form-control" style="width: 150px;" type="date" id="f_cus_use_day" name="form_input" value="{{form_li.f_cus_use_day}}">
-                </div>
-            </div>
+            
         </div>
         
-        <!-- 03 商品について -->
-        <div style="margin: 0 auto; width: 1000px; margin-top: 100px;">
-            <div class="title"><span>03</span>商品について</div>
+        <!-- 02 商品について -->
+        <div style="margin: 0 auto; width: 1000px; margin-top: 50px;">
+            <div class="title"><span>02</span>商品について</div>
             <div class="flex2" style="margin-top: 20px;">
                 <div>
                     <button type="button" class="btn btn-outline-primary" id="btn_shouhin_add" data-bs-toggle="modal" data-bs-target="#shouhin_modal">
-                        <i class='bi bi-plus-lg'></i> 商品を追加する
+                        <i class='bi bi-plus-lg'></i> 商品を入力する
                     </button>
                 </div>
                 <div class="flex3" style="margin-left: 50px;">
@@ -136,23 +113,23 @@
             </div>
             <div>
                 {% for i in shouhin_li %}
-                <div style="margin-top: 20px; font-size: 0.9em;">
+                <div style="margin-top: 20px;">
                     <table class="table table-bordered size">
                         <tr>
                             <th nowrap>メーカー</th>
                             <th nowrap>品番</th>
                             <th>品名</th>
                             <th nowrap>カラー</th>
-                            <th>XXS</th>
                             <th>XS</th>
                             <th>S</th>
                             <th>M</th>
                             <th>L</th>
                             <th>LL</th>
                             <th>3L</th>
-                            <th>4L</th>
                             <th>{{i.new_size_1}}</th>
                             <th>{{i.new_size_2}}</th>
+                            <th>{{i.new_size_3}}</th>
+                            <th>{{i.new_size_4}}</th>
                             <th nowrap>合計</th>
                             <th rowspan="2" nowrap>
                                 <div>
@@ -180,13 +157,13 @@
             </div>
             <div style="margin-top: 30px;">
                 備考欄：
-                <textarea class="form-control" style="width: 500px;" rows="5" id="f_shouhin_bikou" name="form_input">{{form_li.f_shouhin_bikou}}</textarea> 
+                <textarea class="form-control" style="width: 500px;" rows="3" id="f_shouhin_bikou" name="form_input">{{form_li.f_shouhin_bikou}}</textarea> 
             </div>
         </div>
         
-        <!-- 04 プリント内容について -->
-        <div style="margin: 0 auto; width: 1000px; margin-top: 80px;">
-            <div class="title"><span>04</span>プリント内容について</div>
+        <!-- 03 プリント色と加工方法 -->
+        <div style="margin: 0 auto; width: 1000px; margin-top: 50px;">
+            <div class="title"><span>03</span>プリント色と加工方法</div>
             <div class="flex2" style="margin-top: 30px;">
                 <div>
                     <div style="position: relative;"><img src="{% static 't-shirt.png' %}"></div>
@@ -243,11 +220,11 @@
             </div>
         </div>
 
-        <!-- 05 デザインの入稿形式について -->
-        <div style="margin: 0 auto; width: 1000px; margin-top: 100px;">
+        <!-- 04 デザインの入稿形式について -->
+        <div style="margin: 0 auto; width: 1000px; margin-top: 50px;">
             <div class="flex2">
                 <div>
-                    <div class="title"><span>05</span>デザインの入稿形式について</div>
+                    <div class="title"><span>04</span>デザインの入稿形式について</div>
                     <div style="margin-top: 20px;">
                         {% for i,h in design_li.items %}
                             {% if h == False %}
@@ -267,6 +244,65 @@
             </div>
             <div class="design" style="margin-top: 50px;">
                 <div>著作権・商標登録のあるデザインは、関係者以外からの加工依頼はお受けできませんので、予めご了承ください。</div>
+            </div>
+        </div>
+
+        <!-- 05 顧客情報 横タイプ-->
+        <div style="margin: 0 auto; width: 1000px; margin-top: 50px;">
+            <div class="title"><span>05</span>お届け先について</div>
+            <div>
+                <div class="flex2" style="margin-top: 20px;">
+                    <div class="flex3">
+                        <div>会社名 / 団体名：</div>
+                        <div>
+                            <input class="form-control form-control-sm" style="width: 250px;" type="text" id="f_cus_com" name="form_input" value="{{form_li.f_cus_com}}">
+                        </div>
+                    </div>
+                    <div style="margin-left: 20px;">
+                        <div class="flex3">
+                            <div>顧客名：</div>
+                            <div>
+                                <input class="form-control form-control-sm" style="width: 150px;" type="text" id="f_cus_name" name="form_input" value="{{form_li.f_cus_name}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex2" style="margin-top: 20px;">
+                    <div class="flex3">
+                        <div>郵便番号：</div>
+                        <div>
+                            <input class="form-control form-control-sm" style="width: 90px;" type="text" id="f_cus_yubin" name="form_input" value="{{form_li.f_cus_yubin}}">
+                        </div>
+                    </div>
+                    <div class="flex3" style="margin-left: 20px;">
+                        <div>住所：</div>
+                        <div>
+                            <input class="form-control form-control-sm" style="width: 600px;" type="text" id="f_cus_adress" name="form_input" value="{{form_li.f_cus_adress}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex2" style="margin-top: 20px;">
+                    <div class="flex3">
+                        <div>電話番号：</div>
+                        <div>
+                            <input class="form-control form-control-sm" style="width: 130px;" type="text" id="f_cus_tel" name="form_input" value="{{form_li.f_cus_tel}}">
+                        </div>
+                    </div>
+                    <div class="flex3" style="margin-left: 20px;">
+                        <div>希望納期：</div>
+                        <div>
+                            <input class="form-control form-control-sm" style="width: 120px;" type="date" id="f_cus_send_day" name="form_input" value="{{form_li.f_cus_send_day}}">
+                        </div>
+                    </div>
+                    <div style="margin-left: 20px;">
+                        <div class="flex3">
+                            <div>利用予定日：</div>
+                            <div>
+                                <input class="form-control form-control-sm" style="width: 120px;" type="date" id="f_cus_use_day" name="form_input" value="{{form_li.f_cus_use_day}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -291,7 +327,7 @@
                     </div>
                     <div class="modal-body">
                         <div>
-                            メーカー：
+                            メーカー / ブランド：
                             <input class="form-control" style="width: 200px;" type="text" id="maker">
                         </div>
                         <div class="flex2" style="margin-top: 20px;">
@@ -310,7 +346,7 @@
                         <div style="margin-top: 20px;">
                             <div class="flex2" style="justify-content: space-between;">
                                 <div>サイズ：</div>
-                                <div style="font-size: 0.9em; color: red;">※左記以外の場合に入力</div>
+                                <div style="color: red;">※左記以外の場合に入力</div>
                             </div>
                             <table class="table table-bordered size">
                                 <tr>
@@ -319,6 +355,8 @@
                                     {% endfor %}
                                     <th style="width: 10%;"><input class="form-control" type="text" id="new_size_1" style="background-color: #ffffc1;"></th>
                                     <th style="width: 10%;"><input class="form-control" type="text" id="new_size_2" style="background-color: #ffffc1;"></th>
+                                    <th style="width: 10%;"><input class="form-control" type="text" id="new_size_3" style="background-color: #ffffc1;"></th>
+                                    <th style="width: 10%;"><input class="form-control" type="text" id="new_size_4" style="background-color: #ffffc1;"></th>
                                 </tr>
                                 <tr id="size_input_list"></tr> 
                             </table>
@@ -349,7 +387,7 @@
                                 <div id="modal_print_point" style="color: #0000ff; font-size: 1.2em; font-weight: bold; margin-left: 10px;"></div>
                             </div>
                             <div class="flex3 mt-4">
-                                <div>プリント色：</div>
+                                <div>プリント色数：</div>
                                 <div><input class="form-control" type="text" id="modal_print_color" style="width: 200px;"></div>
                             </div>
                             <div class="flex3 mt-4">
@@ -415,6 +453,8 @@
             document.getElementById("color").value="";
             document.getElementById("new_size_1").value="";
             document.getElementById("new_size_2").value="";
+            document.getElementById("new_size_3").value="";
+            document.getElementById("new_size_4").value="";
             document.getElementById("modal_shouhin_add_up").className="btn btn-primary";
             document.getElementById("modal_shouhin_add_up").innerText="追加する";
             str="";
@@ -446,6 +486,8 @@
                         document.getElementById("color").value=res.color;
                         document.getElementById("new_size_1").value=res.new_size_1;
                         document.getElementById("new_size_2").value=res.new_size_2;
+                        document.getElementById("new_size_3").value=res.new_size_3;
+                        document.getElementById("new_size_4").value=res.new_size_4;
                         
                         var str="";
                         for (var i of res.size_li){
@@ -500,6 +542,8 @@
                     'color': document.getElementById("color").value,
                     'new_size_1': document.getElementById("new_size_1").value,
                     'new_size_2': document.getElementById("new_size_2").value,
+                    'new_size_3': document.getElementById("new_size_3").value,
+                    'new_size_4': document.getElementById("new_size_4").value,
                     'size_li':size_li,
                     'form_li':form_li,
                     'design_yes':design_yes,

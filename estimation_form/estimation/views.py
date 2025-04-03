@@ -31,7 +31,7 @@ def index(request):
     for i,h in enumerate(print_li):
         h["index"]=i
 
-    size_li=["XXS","XS","S","M","L","LL","3L","4L"]
+    size_li=["XS","S","M","L","LL/XL","3L/XXL"]
 
     design_yes=request.session["design_yes"]
     design_type=["イラストレータ（.ai）","フォトショップ（.psd）","画像データ（.jpg / .tiff / .pdf）","手書きデータ","その他（右の備考欄にご記入ください）"]
@@ -66,6 +66,8 @@ def shouhin_add_up(request):
     color=request.POST.get("color")
     new_size_1=request.POST.get("new_size_1")
     new_size_2=request.POST.get("new_size_2")
+    new_size_3=request.POST.get("new_size_3")
+    new_size_4=request.POST.get("new_size_4")
     size_li=request.POST.get("size_li")
     size_li=json.loads(size_li)
     form_li=request.POST.get("form_li")  
@@ -82,6 +84,8 @@ def shouhin_add_up(request):
             "color":color,
             "new_size_1":new_size_1,
             "new_size_2":new_size_2,
+            "new_size_3":new_size_3,
+            "new_size_4":new_size_4,
             "size_li":size_li
         }
         shouhin.append(dic)
@@ -93,6 +97,8 @@ def shouhin_add_up(request):
         shouhin[i]["color"]=color
         shouhin[i]["new_size_1"]=new_size_1
         shouhin[i]["new_size_2"]=new_size_2
+        shouhin[i]["new_size_3"]=new_size_3
+        shouhin[i]["new_size_4"]=new_size_4
         shouhin[i]["size_li"]=size_li
 
     request.session["form"]=form_li
@@ -219,7 +225,7 @@ def btn_submit(request):
     )
     # Shouhin
     for i in shouhin_li:
-        all_size=["XXS","XS","S","M","L","LL","3L","4L",i["new_size_1"],i["new_size_2"]]
+        all_size=["XS","S","M","L","LL/XL","3L/XXL",i["new_size_1"],i["new_size_2"],i["new_size_3"],i["new_size_4"]]
         Shouhin.objects.create(
             est_num=est_num,
             maker=i["maker"],

@@ -18,7 +18,7 @@
 .title {
     position: relative;
     padding-left: 4em;
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: bold;
 }  
 .title span {
@@ -91,7 +91,7 @@
     color: #22ac38;
     border-radius: 0 10px 10px 10px;
     background: #e3f5d8;
-    width: 800px;
+    width: 700px;
 }
   
 .design:before {
