@@ -64,6 +64,7 @@
                             <div>
                                 <input class="form-control form-control-sm" style="width: 150px;" type="text" id="f_tantou" name="form_input" value="{{form_li.f_tantou}}">
                             </div>
+                            <div class="hissu" style="margin-left: 7px;">必須</div>
                         </div>
                     </div>
                 </div>
@@ -73,12 +74,14 @@
                         <div>
                             <input class="form-control form-control-sm" style="width: 150px;" type="text" id="f_tel" name="form_input" value="{{form_li.f_tel}}">
                         </div>
+                        <div class="hissu" style="margin-left: 7px;">必須</div>
                     </div>
                     <div class="flex3" style="margin-left: 20px;">
                         <div>メールアドレス：</div>
                         <div>
                             <input class="form-control form-control-sm" style="width: 400px;" type="text" id="f_mail" name="form_input" value="{{form_li.f_mail}}">
                         </div>
+                        <div class="hissu" style="margin-left: 7px;">必須</div>
                     </div>
                 </div>
             </div>
@@ -87,7 +90,10 @@
         
         <!-- 02 商品について -->
         <div style="margin: 0 auto; width: 1000px; margin-top: 50px;">
-            <div class="title"><span>02</span>商品について</div>
+            <div class="flex3" id="shouhin_title">
+                <div class="title"><span>02</span>商品について</div>
+                <div class="hissu" style="margin-left: 7px;">必須</div>
+            </div>
             <div class="flex2" style="margin-top: 20px;">
                 <div>
                     <button type="button" class="btn btn-outline-primary" id="btn_shouhin_add" data-bs-toggle="modal" data-bs-target="#shouhin_modal">
@@ -107,13 +113,11 @@
                             {% endif %}
                         </select>
                     </div>
-                    
                 </div>
-                
             </div>
             <div>
                 {% for i in shouhin_li %}
-                <div style="margin-top: 20px;">
+                <div style="margin-top: 20px;" id="shouhin_show">
                     <table class="table table-bordered size">
                         <tr>
                             <th nowrap>メーカー</th>
@@ -161,9 +165,12 @@
             </div>
         </div>
         
-        <!-- 03 プリント色と加工方法 -->
+        <!-- 03 プリント色数と加工方法 -->
         <div style="margin: 0 auto; width: 1000px; margin-top: 50px;">
-            <div class="title"><span>03</span>プリント色と加工方法</div>
+            <div class="flex3" id="print_title">
+                <div class="title"><span>03</span>プリント色数と加工方法</div>
+                <div class="hissu" style="margin-left: 7px;">必須</div>
+            </div>
             <div class="flex2" style="margin-top: 30px;">
                 <div>
                     <div style="position: relative;"><img src="{% static 't-shirt.png' %}"></div>
@@ -188,7 +195,7 @@
                 </div>
                 <div style="margin-left: 70px; margin-top: -30px;">
                     {% if print_li %}
-                        <div class="print_title">プリント内容</div>
+                        <div class="print_sub_title" id="print_show">プリント内容</div>
                         {% for i in print_li %}
                         <div>
                             <div class="flex3 mt-3">
@@ -196,7 +203,7 @@
                                 <div style="font-weight: bold;">{{i.point}}</div>
                             </div>
                             <div class="flex3">
-                                <div>プリント色：</div>
+                                <div>プリント色数：</div>
                                 <div style="font-weight: bold;">{{i.color}}</div>
                             </div>
                             <div class="flex3">
@@ -321,22 +328,34 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modal_1" style="color: #f75f58;">商品情報を入力してください</h5>
+                        <h5 class="modal-title" id="modal_1" style="color: #f75f58;">商品情報を入力してください。</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         <div id="shouhin_add_up_num" style="display: none;"></div>
                     </div>
                     <div class="modal-body">
                         <div>
-                            メーカー / ブランド：
-                            <input class="form-control" style="width: 200px;" type="text" id="maker">
+                            <div class="flex3">
+                                <div>メーカー / ブランド / カタログ名：</div>
+                                <div class="hissu" style="margin-left: 3px;">必須</div>
+                            </div>
+                            <div>
+                                <input class="form-control" style="width: 300px; margin-top: 5px;" type="text" id="maker">
+                            </div>
                         </div>
                         <div class="flex2" style="margin-top: 20px;">
-                            <div>品番：
-                                <input class="form-control" style="width: 100px;" type="text" id="shouhin_num">
+                            <div>
+                                <div class="flex3">
+                                    <div>品番：</div>
+                                    <div class="hissu" style="margin-left: 3px;">必須</div>
+                                </div>
+                                <div>
+                                    <input class="form-control" style="width: 100px; margin-top: 5px;" type="text" id="shouhin_num">
+                                </div>
                             </div>
+                            
                             <div style="margin-left: 20px;">
                                 品名：
-                                <input class="form-control" style="width: 600px;" type="text" id="shouhin_name">
+                                <input class="form-control" style="width: 600px; margin-top: 5px;" type="text" id="shouhin_name">
                             </div>
                         </div>
                         <div style="margin-top: 20px;">
@@ -344,11 +363,14 @@
                             <input class="form-control" style="width: 200px;" type="text" id="color">
                         </div>
                         <div style="margin-top: 20px;">
-                            <div class="flex2" style="justify-content: space-between;">
-                                <div>サイズ：</div>
-                                <div style="color: red;">※左記以外の場合に入力</div>
+                            <div class="flex2">
+                                <div class="flex3">
+                                    <div>サイズ（数量）：</div>
+                                    <div class="hissu" style="margin-left: 3px;">必須</div>
+                                </div>
+                                <div style="color: red; margin-left: 320px;">※左記以外の場合に入力</div>
                             </div>
-                            <table class="table table-bordered size">
+                            <table class="table table-bordered size" style="margin-top: 5px;">
                                 <tr>
                                     {% for i in size_li %}
                                     <th style="width: 10%;">{{i}}</th>
@@ -376,7 +398,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modal_2" style="color: #f75f58;">プリント色と加工方法を入力してください。</h5>
+                        <h5 class="modal-title" id="modal_2" style="color: #f75f58;">プリント色数と加工方法を選択してください。</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         <div id="print_add_up_num" style="display: none;"></div>
                     </div>
@@ -388,11 +410,31 @@
                             </div>
                             <div class="flex3 mt-4">
                                 <div>プリント色数：</div>
-                                <div><input class="form-control" type="text" id="modal_print_color" style="width: 200px;"></div>
+                                <div>
+                                    <select class="form-select" id="modal_print_color">
+                                        <option value=""></option>
+                                        <option value="1色">1色</option>
+                                        <option value="2色">2色</option>
+                                        <option value="3色">3色</option>
+                                        <option value="フルカラー">フルカラー</option>
+                                        <option value="その他">その他</option>
+                                    </select>
+                                </div>
+                                <div class="hissu" style="margin-left: 7px;">必須</div>
                             </div>
                             <div class="flex3 mt-4">
                                 <div>加工方法：</div>
-                                <div><input class="form-control" type="text" id="modal_print_way" style="width: 200px;"></div>
+                                <div>
+                                    <select class="form-select" id="modal_print_way">
+                                        <option value=""></option>
+                                        <option value="指定なし">指定なし</option>
+                                        <option value="シルクプリント">シルクプリント</option>
+                                        <option value="インクジェット">インクジェット</option>
+                                        <option value="転写">転写</option>
+                                        <option value="刺繍">刺繍</option>
+                                    </select>
+                                </div>
+                                <div class="hissu" style="margin-left: 7px;">必須</div>
                             </div>
                         </div>
                     </div>
@@ -448,7 +490,11 @@
         document.getElementById("btn_shouhin_add").addEventListener("click",function(){
             document.getElementById("shouhin_add_up_num").innerText="add";
             document.getElementById("maker").value="";
+            document.getElementById("maker").style.outline="";
+            document.getElementById("maker").style.backgroundColor="";
             document.getElementById("shouhin_num").value="";
+            document.getElementById("shouhin_num").style.outline="";
+            document.getElementById("shouhin_num").style.backgroundColor="";
             document.getElementById("shouhin_name").value="";
             document.getElementById("color").value="";
             document.getElementById("new_size_1").value="";
@@ -459,7 +505,7 @@
             document.getElementById("modal_shouhin_add_up").innerText="追加する";
             str="";
             for (var i=0; i<10; i++){
-                str=str + "<td><input class='form-control' type='number' name='size_suryo'></td>";
+                str=str + "<td><input class='form-control' type='number' name='size_suryo' min='1'></td>";
             }
             document.getElementById("size_input_list").innerHTML=str;
         })
@@ -481,7 +527,11 @@
                     .done(function(response){
                         res=response.shouhin;
                         document.getElementById("maker").value=res.maker;
+                        document.getElementById("maker").style.outline="";
+                        document.getElementById("maker").style.backgroundColor="";
                         document.getElementById("shouhin_num").value=res.shouhin_num;
+                        document.getElementById("shouhin_num").style.outline="";
+                        document.getElementById("shouhin_num").style.backgroundColor="";
                         document.getElementById("shouhin_name").value=res.shouhin_name;
                         document.getElementById("color").value=res.color;
                         document.getElementById("new_size_1").value=res.new_size_1;
@@ -491,7 +541,7 @@
                         
                         var str="";
                         for (var i of res.size_li){
-                            str=str + "<td><input class='form-control' type='number' name='size_suryo' value='" + i + "'></td>";
+                            str=str + "<td><input class='form-control' type='number' name='size_suryo' min='1' value='" + i + "'></td>";
                         }
                         document.getElementById("size_input_list").innerHTML=str;
                         document.getElementById("modal_shouhin_add_up").className="btn btn-success";
@@ -523,12 +573,37 @@
             var suryo=0;
             for (i of size_suryo){
                 size_li.push(i.value);
-                suryo=suryo+i.value;
+                suryo=suryo + Number(i.value);
             }
             size_li=JSON.stringify(size_li);
             
+
+            // バリデーション
+            var str ="";
+            var maker=document.getElementById("maker");
+            if (maker.value==""){
+                str="「メーカー / ブランド / カタログ名」 を入力してください。\n";
+                maker.style.outline="solid 1px red";
+                maker.style.backgroundColor="#fddfdd";
+                shouhin_vari();
+            }
+            var shouhin_num=document.getElementById("shouhin_num");
+            if (shouhin_num.value==""){
+                str=str + "「品番」 を入力してください。\n";
+                shouhin_num.style.outline="solid 1px red";
+                shouhin_num.style.backgroundColor="#fddfdd";
+                shouhin_vari();
+            }
             if (suryo==0){
-                window.alert("数量を入力してください！");
+                str=str + "「数量」 を入力してください。";
+                for (i of size_suryo){
+                    i.style.outline="solid 1px red";
+                    i.style.backgroundColor="#fddfdd";
+                    shouhin_vari();
+                }
+            }
+            if (str != ""){
+                window.alert(str);
                 return
             }
             $.ajax({
@@ -554,6 +629,51 @@
                 window.location.reload();
             })
         });
+
+
+        // 商品_バリデーション
+        function shouhin_vari(){
+            var maker=document.getElementById("maker");
+            maker.addEventListener("input",function(){
+                if (maker.value==""){
+                    maker.style.outline="solid 1px red";
+                    maker.style.backgroundColor="#fddfdd";
+                } else {
+                    maker.style.outline="";
+                    maker.style.backgroundColor="";
+                }
+            })
+            var shouhin_num=document.getElementById("shouhin_num");
+            shouhin_num.addEventListener("input",function(){
+                if (shouhin_num.value==""){
+                    shouhin_num.style.outline="solid 1px red";
+                    shouhin_num.style.backgroundColor="#fddfdd";
+                } else {
+                    shouhin_num.style.outline="";
+                    shouhin_num.style.backgroundColor="";
+                }
+            })
+            var size_suryo = document.getElementsByName("size_suryo");
+            for (i of size_suryo){
+                i.addEventListener("input",function(){
+                    var suryo=0;
+                    for (h of size_suryo){
+                        suryo=suryo + Number(h.value);
+                    }
+                    if (suryo==0){
+                        for (h of size_suryo){
+                            h.style.outline="solid 1px red";
+                            h.style.backgroundColor="#fddfdd";
+                        }
+                    } else {
+                        for (h of size_suryo){
+                            h.style.outline="";
+                            h.style.backgroundColor="";
+                        }
+                    }
+                })
+            }
+        };
 
 
         // 商品削除
@@ -600,6 +720,12 @@
             for (var i=0; i<print_point.length; i++){
                 print_point[i].addEventListener("click",function(){
                     document.getElementById("modal_print_point").innerText=this.id;
+                    document.getElementById("modal_print_color").value="",
+                    document.getElementById("modal_print_color").style.outline="";
+                    document.getElementById("modal_print_color").style.backgroundColor="";
+                    document.getElementById("modal_print_way").value="",
+                    document.getElementById("modal_print_way").style.outline="";
+                    document.getElementById("modal_print_way").style.backgroundColor="";
                     document.getElementById("modal_print_add_up").className="btn btn-primary";
                     document.getElementById("modal_print_add_up").innerText="追加する";
                 });
@@ -624,7 +750,11 @@
                         res=response.print;
                         document.getElementById("modal_print_point").innerText=res.point;
                         document.getElementById("modal_print_color").value=res.color;
+                        document.getElementById("modal_print_color").style.outline="";
+                        document.getElementById("modal_print_color").style.backgroundColor="";
                         document.getElementById("modal_print_way").value=res.way;
+                        document.getElementById("modal_print_way").style.outline="";
+                        document.getElementById("modal_print_way").style.backgroundColor="";
                         document.getElementById("modal_print_add_up").className="btn btn-success";
                         document.getElementById("modal_print_add_up").innerText="修正する";
                     });
@@ -635,6 +765,28 @@
 
         // プリント内容_追加 or 編集（モーダルで決定）
         document.getElementById("modal_print_add_up").addEventListener("click",function(){
+            // バリデーション
+            var str ="";
+            var color=document.getElementById("modal_print_color");
+            if (color.value==""){
+                str="「プリント色数」 を選択してください。\n";
+                color.style.outline="solid 1px red";
+                color.style.backgroundColor="#fddfdd";
+                print_vari();
+            }
+            var way=document.getElementById("modal_print_way");
+            if (way.value==""){
+                str=str + "「加工方法」 を選択してください。";
+                way.style.outline="solid 1px red";
+                way.style.backgroundColor="#fddfdd";
+                print_vari();
+            }
+            if (str != ""){
+                window.alert(str);
+                return
+            }
+
+            // 送信
             var form_input = document.getElementsByName("form_input");
             var form_li={};
             for (var i of form_input){
@@ -666,6 +818,31 @@
                 window.location.reload();
             });
         });
+
+
+        // プリント_バリデーション
+        function print_vari(){
+            var color=document.getElementById("modal_print_color");
+            color.addEventListener("change",function(){
+                if (color.value==""){
+                    color.style.outline="solid 1px red";
+                    color.style.backgroundColor="#fddfdd";
+                } else {
+                    color.style.outline="";
+                    color.style.backgroundColor="";
+                }
+            })
+            var way=document.getElementById("modal_print_way");
+            way.addEventListener("change",function(){
+                if (way.value==""){
+                    way.style.outline="solid 1px red";
+                    way.style.backgroundColor="#fddfdd";
+                } else {
+                    way.style.outline="";
+                    way.style.backgroundColor="";
+                }
+            })
+        };
 
 
         // プリント削除
@@ -707,6 +884,63 @@
 
         // 最終決定ボタン
         document.getElementById("btn_submit").addEventListener("click",function(){
+            var str ="";
+            var flag_1=false;
+            var flag_2=false;
+            var flag_3=false;
+            // 依頼者_バリデーション
+            var tantou=document.getElementById("f_tantou");
+            if (tantou.value==""){
+                str="「ご担当者」 を入力してください。\n";
+                flag_1=true;
+                tantou.style.outline="solid 1px red";
+                tantou.style.backgroundColor="#fddfdd";
+            }
+            var tel=document.getElementById("f_tel");
+            if (tel.value==""){
+                str=str + "「電話番号」 を入力してください。\n";
+                flag_1=true;
+                tel.style.outline="solid 1px red";
+                tel.style.backgroundColor="#fddfdd";
+            }
+            var mail=document.getElementById("f_mail");
+            if (mail.value==""){
+                str=str + "「メールアドレス」 を入力してください。\n";
+                flag_1=true;
+                mail.style.outline="solid 1px red";
+                mail.style.backgroundColor="#fddfdd";
+            }
+            // 商品_バリデーション
+            if (document.getElementById("shouhin_show")==null){
+                str=str + "「02 商品について」 を入力してください。\n"
+                flag_2=true;
+                document.getElementById("shouhin_title").style.color="red";
+                document.getElementById("shouhin_title").style.backgroundColor="#fddfdd";
+            }
+            // プリント_バリデーション
+            if (document.getElementById("print_show")==null){
+                str=str + "「03 プリント色数と加工方法」 を入力してください。"
+                flag_3=true;
+                document.getElementById("print_title").style.color="red";
+                document.getElementById("print_title").style.backgroundColor="#fddfdd";
+            }
+            // 最終確認
+            if (flag_1==true){
+                window.alert(str);
+                scrollTo(0, 100);
+                submit_vari();
+                return
+            } else if (flag_2==true){
+                window.alert(str);
+                scrollTo(0, 280);
+                return
+            } else if (flag_3==true){
+                window.alert(str);
+                scrollTo(0, 660);
+                return
+            }
+
+            // 送信
             document.getElementById("btn_submit").disabled=true;
             var form_input = document.getElementsByName("form_input");
             var form_li={};
@@ -736,6 +970,41 @@
                 window.location.href="https://docs.google.com/forms/d/e/1FAIpQLSe0cQJlKAE1hUdd89-IVBr67zsVu-mcm8UBGO0pgeuI6LjGDw/viewform?usp=dialog";
             });
         });
+
+
+        // 最終_バリデーション
+        function submit_vari(){
+            var tantou=document.getElementById("f_tantou");
+            tantou.addEventListener("input",function(){
+                if (tantou.value==""){
+                    tantou.style.outline="solid 1px red";
+                    tantou.style.backgroundColor="#fddfdd";
+                } else {
+                    tantou.style.outline="";
+                    tantou.style.backgroundColor="";
+                }
+            })
+            var tel=document.getElementById("f_tel");
+            tel.addEventListener("input",function(){
+                if (tel.value==""){
+                    tel.style.outline="solid 1px red";
+                    tel.style.backgroundColor="#fddfdd";
+                } else {
+                    tel.style.outline="";
+                    tel.style.backgroundColor="";
+                }
+            })
+            var mail=document.getElementById("f_mail");
+            mail.addEventListener("input",function(){
+                if (mail.value==""){
+                    mail.style.outline="solid 1px red";
+                    mail.style.backgroundColor="#fddfdd";
+                } else {
+                    mail.style.outline="";
+                    mail.style.backgroundColor="";
+                }
+            })
+        };
 
 
     </script>

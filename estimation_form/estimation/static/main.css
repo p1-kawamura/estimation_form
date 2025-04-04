@@ -40,12 +40,21 @@
     border-style: solid;
     border-color: transparent transparent transparent #22ac38;
   }
-.print_title {
+.print_sub_title {
     padding: 0.5em;
     color: #494949;
     background: #e1ffe1;
     border-left: solid 5px #008080;
     font-weight: bold;
+}
+.hissu {
+    background-color: #f75f58;
+    color: #fff;
+    font-size: 0.8em;
+    font-weight: bold;
+    padding: 3px 7px;
+    line-height: 1;
+    border-radius: 10px;
 }
 
 /* サイズ表 */
